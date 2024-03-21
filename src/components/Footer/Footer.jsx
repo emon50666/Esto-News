@@ -38,7 +38,7 @@ const Footer = () => {
   
 
             </footer>
-            <footer className="footer bg-gray-800 footer-center p-4 text-gray-500 text-base-content">
+            <footer className="footer bg-gray-800 footer-center p-4 text-gray-500 ">
   <aside>
     <p>Copyright © 2024 - All right reserved | Develop By <span className="text-yellow-400 font-black"><a href="https://www.facebook.com/profile.php?id=100080623072389">Emon</a></span></p>
   </aside>

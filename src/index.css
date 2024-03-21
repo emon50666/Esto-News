@@ -20,3 +20,29 @@
       background-position: 0% 50%;
     }
   }
+
+
+
+
+
+
+
+
+  #scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color: #4A00FF;
+    color: #fff;
+    border: none;
+    border-radius:100%;
+    padding: 10px 10px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  #scrollToTopBtn:hover {
+    background-color: #FF00D3;
+  }
+  
