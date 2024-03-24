@@ -1,10 +1,11 @@
 import { Link, useLoaderData } from "react-router-dom";
 import SingleBlog from "./SingleBlog";
+import { useState } from "react";
 
 
 
 const Blogs = () => {
-    
+    const [dataLength,setDataLength] = useState(6)
     const blogs = useLoaderData();
 
     return (
@@ -22,13 +23,15 @@ const Blogs = () => {
             </Link>
             <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                {
-                blogs.map(blog => <SingleBlog key={blog.id} blog={blog} ></SingleBlog> )
+                blogs.slice(0,dataLength).map(blog => <SingleBlog key={blog.id} blog={blog} ></SingleBlog> )
                }
 
 
             </div>
             <div className="flex justify-center">
-                <button type="button" className="px-6 py-3 text-sm rounded-md hover:underline bg-gray-900 text-gray-400">Load more posts...</button>
+                <div className={dataLength === blogs.length && 'hidden'}>
+                <button onClick={() => setDataLength(blogs.length)} type="button" className="px-6 py-3 text-sm rounded-md hover:underline bg-gray-900 text-gray-400">Load more posts...</button>
+                </div>
             </div>
         </div>
     </section>

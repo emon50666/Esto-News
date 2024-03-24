@@ -39,6 +39,10 @@ import Blogs from './components/BlogPage/Blogs.jsx'
 import Bookmark from './components/Bookmarks/Bookmark.jsx'
 import Contact from './components/Contact/Contact.jsx'
 
+import BlogDetails from './components/BlogPage/BlogDetails.jsx';
+import Content from './components/AllContentDetails/Content.jsx';
+import Author from './components/AllContentDetails/Author.jsx';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -52,6 +56,25 @@ element: <Home></Home>
     path: '/blogs',
     loader: () => fetch('https://dev.to/api/articles?per_page=20&top=7'),
     element: <Blogs></Blogs>
+  },
+  {
+    path: '/blogs/:id',
+    element:<BlogDetails></BlogDetails>,
+    loader: ({ params}) => fetch(`https://dev.to/api/articles/${params.id} `),
+    children:[
+      {
+        index: true,
+        element: <Content></Content>,
+        loader: ({ params}) => fetch(`https://dev.to/api/articles/${params.id} `),
+      },
+      {
+       path: 'author',
+        element: <Author></Author>,
+        loader: ({ params}) => fetch(`https://dev.to/api/articles/${params.id} `),
+      }
+    ]
+   
+
   },
   {
     path: '/Bookmarks',
