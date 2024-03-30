@@ -1,5 +1,6 @@
 
-const Contact = () => {
+
+const Chart = () => {
     return (
         <div>
             
@@ -7,4 +8,4 @@ const Contact = () => {
     );
 };
 
-export default Contact;
+export default Chart;

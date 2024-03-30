@@ -43,10 +43,23 @@ import BlogDetails from './components/BlogPage/BlogDetails.jsx';
 import Content from './components/AllContentDetails/Content.jsx';
 import Author from './components/AllContentDetails/Author.jsx';
 
+import  { Toaster } from 'react-hot-toast';
+import { HelmetProvider } from 'react-helmet-async';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+import Login from './components/Login/Login.jsx';
+// ..
+AOS.init();
+
 const router = createBrowserRouter([
+ 
+  
+
   {
+    
     path: '/',
     element: <App></App>,
+    
 children: [
   {
 path: '/',
@@ -71,7 +84,8 @@ element: <Home></Home>
        path: 'author',
         element: <Author></Author>,
         loader: ({ params}) => fetch(`https://dev.to/api/articles/${params.id} `),
-      }
+      },
+     
     ]
    
 
@@ -83,7 +97,12 @@ element: <Home></Home>
   {
     path: '/contact',
     element: <Contact></Contact>
+  },
+  {
+    path: '/login',
+    element: <Login></Login>
   }
+  
 ]
   },
   
@@ -92,7 +111,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 
 <>
+<HelmetProvider>
 <RouterProvider router={router} ></RouterProvider>
+</HelmetProvider>
     {/* <App /> */}
+    <Toaster></Toaster>
 </>
 )
